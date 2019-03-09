@@ -1,6 +1,6 @@
-#Round 1
+# Round 1
 
-###Round 1 知识
+### Round 1 知识
 
 一、Django xadmin 的搭建指导
 关于 xadmin 的相关知识，网络上已经有很多了，但是每个知识点都是零零散散的，我自己在搭建的过程中也遇到了一些问题，每次都需要重新查找资料，这里做个简单的总结，希望对大家能有帮助。
@@ -11,14 +11,19 @@
 
 
 
-###Django xadmin 搭建
-####安装方式
+### Django xadmin 搭建
+
+#### 安装方式
+
 这里有两种安装方式，pip 安装和源码安装，因为本文主要介绍 xadmin 的安装，所以一些 Django 的基础配置操作，就不再令行说明。
 当前 pip 安装的 xadmin 还不支持 django 2.0，所以如果我们使用最新的 django 版本，那么就只能使用源码安装了，我这里也主要介绍该种方法。
-####下载源码
+
+#### 下载源码
+
 进入到 xadmin 的 GitHub 主页（https://github.com/sshwsfc/xadmin），切换至 django2 分支，然后下载源码到本地。
 
-####安装配置
+#### 安装配置
+
 我这使用的是 Python 3.6 + Django 2.1。
 首先创建 Django 项目，不多说，例如我创建的 Django 项目名称为 test_xadmin，再创建名称为 app_xadmin 的 app 应用。在该项目的顶级目录下，即与 manage.py 文件同目录下，创建 extra_apps 目录，并将 xadmin 项目源码解压出的 xadmin 目录拷贝至该目录下。
 在 Django 项目的 setting.py 文件中添加如下代码：
@@ -54,8 +59,10 @@ def render(self, name, value, attrs=None, renderer=None):
         ...
 
 
-####功能完善
-#####配置导入导出功能
+#### 功能完善
+
+##### 配置导入导出功能
+
 xadmin 默认的功能只有导出，并不能支持文件的导入，我们需要下载 django-import-export 依赖包来支持导入导出功能。
 ```shell
 pip install django-import-export
@@ -104,7 +111,8 @@ class ArticleAdmin(object):
 ```
 
 
-#####运行 django 程序
+##### 运行 django 程序
+
 使用 gunicorn 部署 django，安装 gunicorn
 ```shell
 pip install gunicorn
@@ -125,8 +133,9 @@ urlpatterns += staticfiles_urlpatterns()
 这样，就在本地的 8000 端口启动了服务
 >如果出现默写 css 样式展示的问题，可以执行下 python manage.py collectstatic 命令，来搜集静态文件到 settings.py 中设置的 STATIC_ROOT 文件夹中。
 
-###基于 wxPython 的聊天程序
-####入门 Hello World
+### 基于 wxPython 的聊天程序
+
+#### 入门 Hello World
 ```python
 import wx
 app = wx.App(false)
@@ -136,7 +145,8 @@ app.MainLoop() #启动事件循环
 ```
 
 
-#####编写 server 端
+##### 编写 server 端
+
 使用 asynchat 和 asyncore 两个 Python 的异步通信模块
 ```python
 import asynchat
@@ -291,7 +301,7 @@ if __name__ == '__main__':
     except KeyboardInterrupt:
         print("chat server exit")
 ```
-#####编写 client 端
+##### 编写 client 端
 使用 telnet 的方式来登陆，所以需要用到 telnetlib 模块
 ```python
 import wx
